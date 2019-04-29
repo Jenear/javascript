@@ -5,14 +5,15 @@
  */
 // 深拷贝
 function deepClone(obj) {
-    if (obj == null) {
-        return null
-    } else if (typeof obj !== 'object') {
-        return obj
-    }
-    let t = new obj.constructor(); //不懂
-    for (let key in obj) {
-        t[key] = deepClone(obj.key) //不懂
-    }
-    return t
+  if (obj == null) {
+    return null;
+  } else if (typeof obj !== "object") {
+    return obj;
+  }
+  let t = new obj.constructor(); //不懂
+  for (let key in obj) {
+    t[key] = deepClone(obj.key); //不懂
+  }
+  return t;
 }
+function add() {}

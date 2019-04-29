@@ -1,0 +1,33 @@
+{
+  // 设置行尾序列为LF(必需)
+  "files.eol": "\n",
+  // 是否开启eslint检测(必需)
+  "eslint.enable": true,
+  // 编辑器字体大小
+  "editor.fontSize": 14,
+  // 空格
+  "editor.tabSize": 2,
+  // 保存时是否自动化格式文档
+  "editor.formatOnSave": true,
+  // 调整窗口的缩放级别
+  "window.zoomLevel": 0,
+  // 文件保存时，是否自动根据eslint进行格式化
+  "eslint.autoFixOnSave": true,
+  // VsCode 文件搜索区域配置
+  "search.exclude": {
+    "**/dist": true,
+    "**/build": true,
+    "**/package-lock.json": true,
+    "**/.gitignore": true,
+    "**/.vscode": false,
+    "**/yarn.lock": true,
+    "**/package.json": true
+  },
+  //license开源协议头部配置(必需)
+  "licenser.license": "Custom",
+  "licenser.author": "delta",
+  "licenser.projectName": "Awesome project",
+  "licenser.useSingleLineStyle": false,
+  "licenser.customHeader": "@FILE@ - @PROJECT@\nCopyright @YEAR@ @AUTHOR@\nThis is my license...",
+  "licenser.disableAutoHeaderInsertion": false
+}
