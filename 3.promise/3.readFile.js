@@ -1,4 +1,4 @@
-let fs = require('fs');
+let fs = require("fs");
 
 // fs.readFile('1.txt', 'utf-8', function(err, data) {
 //     if (err) {
@@ -17,7 +17,7 @@ let fs = require('fs');
 
 function read(url) {
   const promise = new Promise((resolve, reject) => {
-    fs.readFile(url, 'utf-8', function(err, data) {
+    fs.readFile(url, "utf-8", function(err, data) {
       if (err) {
         reject(err);
       } else {
@@ -44,23 +44,23 @@ function read(url) {
  * 即使是走到了失败了回调了，接着也可以走到下一个then成功里，返回值是undefined
  * 如果没有返回值默认就是return undefined
  */
-read('1.txt')
-  .then((data) => {
+read("1.txt")
+  .then(data => {
     return 100;
   })
-  .then((data) => {
+  .then(data => {
     throw new Error();
   })
   .then(
-    (data) => {
-      console.log('data1:', data);
+    data => {
+      console.log("data1:", data);
     },
-    (err) => {
-      console.log('err:', err);
+    err => {
+      console.log("err:", err);
     }
   )
-  .then((data) => {
-    console.log('data22222:', data);
+  .then(data => {
+    console.log("data22222:", data);
   });
 
 /**
@@ -69,14 +69,14 @@ read('1.txt')
  * 不过catch之后还可以运用then方法，和then的err中是一样的
  */
 
-read('1.txt')
-  .then((data) => {})
-  .then((data) => {
+read("1.txt")
+  .then(data => {})
+  .then(data => {
     throw new Error();
   })
-  .catch((err) => {
-    console.log('err----:', err);
+  .catch(err => {
+    console.log("err----:", err);
   })
-  .then((data) => {
-    console.log('catch-then', data);
+  .then(data => {
+    console.log("catch-then", data);
   });
