@@ -1,0 +1,9 @@
+
+## 链接 git 仓库
+
+```
+github上新建一个仓库，
+然后在项目上进行：git init 命令
+然后再输入：git remote add origin https://github.com/Jenear/reactredux.git，
+此时就连上了git仓库，可以进行代码提交
+```
