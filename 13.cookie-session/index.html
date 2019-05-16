@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <h1>server.js 使用说明</h1>
+    <div>
+      <ol>
+        <li>
+          启动服务，
+          在write里设置setheader新鲜，将set-cookie放进去，返送到浏览器
+          在浏览器端访问http://localhost:3030/write
+          在response header里有Set-Cookie返回和对应的值返回，返回到了浏览器
+        </li>
+        <li>
+          再访问http://localhost:3030/read，就可以看到request header中把cookie传到了服务端
+
+        </li>
+        <li>
+          <p>
+            参数的使用：expires 设置过期时间（秒）
+            可以设置在某个时间点后该cookie就会失效，
+          </p>
+
+          <span>
+            （缺点：是一个绝对时间，如果设置的是2019年5月18号，把计算机的时间改到2018年5月5日，一直都设置到这一天那么就不会过期
+          </span>
+          <p>
+            maxAge:最大失效时间（毫秒），设置在多少时间后失效，和浏览器的时间无关
+          </p>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+</body>
+
+</html>
