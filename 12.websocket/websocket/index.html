@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- <input id="message" type="text" /> -->
+    <button class="1" onclick="sendMessage()">发送</button>
+    <button class="2" onclick="updateUI()">更新</button>
+    <button class="3" onclick="closeUpdate()">关闭更新</button>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>price</th>
+        </tr>
+      </thead>
+      <tbody class="tableTbody"></tbody>
+    </table>
+
+    <script>
+      const ws = new WebSocket('ws://localhost:8800');
+      //websocket 已经打开链接
+      ws.onopen = function(e) {
+        console.log('websocket 已经链接');
+      };
+      //接收websocket发送来的数据
+      ws.onmessage = function(e) {
+        console.log('websocket 发送数据过来,e', e);
+        const resData = JSON.parse(e.data);
+        tableList(resData);
+      };
+      // websocket 已经关闭
+      ws.onclose = function(event) {
+        console.log('websocket 已经关闭', event);
+      };
+      ws.onerror = function(event) {
+        console.log('error', event);
+      };
+
+      const goodsData = {
+        type: 'init',
+        data: [
+          { name: 'iphone4', price: 2000 },
+          { name: 'iphone5', price: 2500 },
+          { name: 'iphone6', price: 3000 },
+          { name: 'iphone7', price: 3500 },
+          { name: 'iphone8', price: 4000 },
+        ],
+      };
+      const tableData = goodsData.data;
+
+      function sendMessage() {
+        ws.send(JSON.stringify(goodsData)); //需要将对象转成字符串。WebSocket只支持文本和二进制数据
+      }
+      function updateUI() {
+        console.log('update ui ');
+        ws.send(JSON.stringify({ type: 'update', data: [] }));
+      }
+      function tableList(tableData) {
+        console.log('00000', tableData);
+        let table = '';
+        tableData.map((item) => {
+          table += `<tr><td>${item.name}</td><td>${item.price}</td></tr>`;
+        });
+        $('.tableTbody').html(table);
+      }
+      function closeUpdate() {
+        console.log('close ui ');
+        ws.send(JSON.stringify({ type: 'close', data: [] }));
+      }
+    </script>
+  </body>
+</html>
