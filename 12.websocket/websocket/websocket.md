@@ -58,3 +58,12 @@ ws.onerror = function(event) {
 //向server端发送数据，主要把对象转为字符串，WebSocket只支持文本和二进制数据
 ws.send(JSON.stringify(data))//需要将对象转成字符串。WebSocket只支持文本和二进制数据
 ```
+
+## websocket 的握手是通过 http 协议 实现的
+
+```
+WebSocket 是独立的、创建在 TCP 上的协议。
+Websocket 通过HTTP/1.1 协议的101状态码进行握手。不过和普通的http协议会有所不同，他的头部会携带Upgrade: WebSocket，Connection: Upgrade等信息，
+为了创建Websocket连接，需要通过浏览器发出请求，之后服务器进行回应，这个过程通常称为“握手”（handshaking）
+websocket一次握手成功就会一直连接，双方就可以通过这个连接通道自由的传递信息，并且这个连接会持续存在直到客户端或者服务器端的某一方主动的关闭连接。
+```
