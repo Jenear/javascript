@@ -60,6 +60,7 @@ sessionID 可以认为是cookie和session的桥梁
 - 第一种方案：每次请求中的携带一个 sessionID 作为参数，也可以 post 方式也可以拼接到 url 后面（应该很危险？？）
 - 第二种方案：Token 机制；token 的意思是"令牌"，服务器端生成一串字符串，作为客户端请求的一个标识，和 session-cookie 机制比较相似；安全度？？？？？
 
+## Token 
 ```
 Token机制：
 当用户第一次登陆后，服务器根据提交的用户信息生成一个Token，相应时将Token返回给客户端，以后客户端发送HTTP请求的时候把Token放到请求头（request header）里，无需再次登陆验证

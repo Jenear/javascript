@@ -1,12 +1,14 @@
 /**
  * fetch 用法：目前知道两种
  * fetch 是基于promise设计的，支持 async/await； 更加底层； 脱离了XHR，是ES规范里新的实现方式；fetch 默认不携带cookie
+ * fetch 优点：避免了ajax的回调地狱问题，而且不需要去封装
+ * ajax  需要大量的封装之后采取使用：比如jQuery和axios（运用promise）都是去封装了ajax请求，使用起来才比较方便
  * 1：用whatwg-fetch
  * 2：用isomorphic-fetch
  *
  * 兼容性的一些东西：
- * 首先判断浏览器是否原生支持fetch，否则结合Promise使用XMLHttpRequest的方式来实现；
- * 这正是whatwg-fetch的实现思路，而同构应用中使用的isomorphic-fetch，其客户端fetch的实现是直接require whatwg-fetch来实现的。
+ * 首先判断浏览器是否原生支持fetch，否则结合Promise使用XMLHttpRequest的方式来实现；这正是whatwg-fetch的实现思路
+ * 而同构应用中使用的isomorphic-fetch，其客户端fetch的实现是直接require whatwg-fetch来实现的。
  *
  */
 // 1：用whatwg-fetch
@@ -17,10 +19,12 @@ fetch(url, options).then(
   (res) => {
     console.log(res);
   },
-  function(err) {
+  function (err) {
     console.log(err);
   }
 );
+
+
 // 2：用isomorphic-fetch
 // 安装：npm install isomorphic-fetch --save
 
@@ -38,7 +42,7 @@ fetch(url, {
     //返回的就是常规的json数据，可以进行常规操作了
     console.log(myData);
   })
-  .catch(function(e) {
+  .catch(function (e) {
     console.log('Oops, error');
   });
 /**
@@ -74,7 +78,7 @@ fetch(url, {
     //返回的就是常规的json数据，可以进行常规操作了
     console.log(myData);
   })
-  .catch(function(e) {
+  .catch(function (e) {
     console.log('Oops, error');
   });
 
@@ -103,3 +107,5 @@ const checkStatus = (response) => {
 // 针对跨域请求，cors模式是常见跨域请求实现，但是fetch自带的no-cors跨域请求模式则较为陌生，该模式有一个比较明显的特点：
 
 // 该模式允许浏览器发送本次跨域请求，但是不能访问响应返回的内容，这也是其response type为opaque透明的原因。
+
+
