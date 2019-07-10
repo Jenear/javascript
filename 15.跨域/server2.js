@@ -19,5 +19,14 @@ app.get('/getData', function (req, res) {
   console.log('req.headers', req.headers)
   res.end('I am 4000 server')
 })
+app.get('/department', function (req, res) {
+  console.log('req.headers', req)
+  res.end('department')
+})
+app.post('/addData', function (req, res) {
+  // console.log(res)
+  res.end(JSON.stringify({ 'nickName': 'angela' }))
+})
+
 
 app.listen(4000)

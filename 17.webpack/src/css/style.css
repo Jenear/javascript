@@ -1,0 +1,16 @@
+body{
+  background:deeppink
+}
+
+.box1{
+  width:500px;
+  height:500px;
+  background-image: url('../images/gear.jpg')
+}
+
+.box2{
+  width:200px;
+  height:200px;
+  background-image: url('../images/load.jpg');
+  background-repeat: no-repeat;
+}
